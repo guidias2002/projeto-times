@@ -1,0 +1,20 @@
+.time {
+    text-align: center;
+    padding: 32px;
+    background-color: #e5e5e5;
+    border-bottom: 1px solid #cecece;
+}
+
+.time h3 {
+    font-size: 32px;
+    display: inline-block;
+    border-bottom: 3px solid;
+    padding-bottom: 8px;
+}
+
+.card-jogadores {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 32px;
+}
