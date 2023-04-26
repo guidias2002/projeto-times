@@ -1,12 +1,15 @@
 import Jogador from '../Jogador'
 import './Times.css'
 
-const Time = (props) => {
+const Time = ({ time, jogadores, aoDeletar, corPrimaria, mudarCor }) => {
     return (
-        (props.jogadores.length > 0) ? <section className='time'>
-            <h3 style={{ borderColor: props.corPrimaria }}>{props.nome}</h3>
+        (jogadores.length > 0) ? <section className='time'>
+            <input onChange={evento => mudarCor(evento.target.value, time.nome)} value={corPrimaria} type='color' className='input-cor'/>
+            <h3 style={{ borderColor: corPrimaria }}>{time.nome}</h3>
             <div className='card-jogadores'>
-                {props.jogadores.map(jogador => <Jogador jogador={jogador.nome} corPrimaria={props.corPrimaria} nome={jogador.nome} posicao={jogador.posicao} />)}
+                {jogadores.map((jogador, indice) => {
+                    return <Jogador key={indice} corPrimaria={corPrimaria} nome={jogador.nome} posicao={jogador.posicao} aoDeletar={aoDeletar} />
+                })}
             </div>
         </section> 
         : ''

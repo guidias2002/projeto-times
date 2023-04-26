@@ -4,7 +4,7 @@ import Time from "./components/Times";
 
 function App() {
 
-  const times = [
+  const [times, setTimes] = useState([
     {
       nome: 'Vasco da Gama',
       corPrimaria: '#000',
@@ -21,24 +21,39 @@ function App() {
       nome: 'Botafogo',
       corPrimaria: '#000',
     }
-  ]
+  ])
 
   const [jogadores, setJogadores] = useState([])
 
   const aoNovoJogadorAdicionado = (jogador) => {
-    debugger
     setJogadores([...jogadores, jogador])
   }
+
+  function deletarJogador() {
+    console.log('deletando jogador')
+}
+
+  function mudarCorDoTime(cor, nome) {
+    setTimes(times.map(time =>{
+      if(time.nome === nome) {
+        time.corPrimaria = cor;
+      }
+      return time;
+    }))
+  }
+
 
   return (
     <div className='app-times'>
       <Formulario times={times.map(time => time.nome)} aoJogadorCadastrado={jogador => aoNovoJogadorAdicionado(jogador)}/>    
 
-      {times.map(time => <Time 
-        key={time.nome} 
-        nome={time.nome} 
+      {times.map((time, indice) => <Time 
+        key={indice} 
+        time={time}
         corPrimaria={time.corPrimaria}
         jogadores={jogadores.filter(jogador => jogador.time === time.nome)}
+        aoDeletar={deletarJogador}
+        mudarCor={mudarCorDoTime}
       />)}
     </div>
   );
