@@ -1,12 +1,11 @@
 import {AiFillCloseCircle} from 'react-icons/ai'
-
 import './Jogador.css'
 
-const Jogador = ({ nome, posicao, corPrimaria, aoDeletar }) => {
+const Jogador = ({ nome, posicao, cor, aoDeletar }) => {
     return (
         <div className='card'>
             <AiFillCloseCircle size={25} color='tomato' className='deletar' onClick={aoDeletar}/>
-            <div className='cabecalho' style={{ backgroundColor: corPrimaria }}>
+            <div className='cabecalho' style={{ backgroundColor: cor }}>
                 <img src='https://github.com/guidias2002.png' alt='Guilherme dias'/>
             </div>
 
