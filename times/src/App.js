@@ -1,23 +1,28 @@
 import { useState } from "react";
 import Formulario from "./components/Formulario";
 import Time from "./components/Times";
+import { v4 as uuidv4 } from 'uuid';
 
 function App() {
 
   const [times, setTimes] = useState([
     {
+      id: uuidv4(),
       nome: 'Vasco da Gama',
       cor: '#000',
     },
     {
+      id: uuidv4(),
       nome: 'Flamengo',
       cor: '#f20505',
     },
     {
+      id: uuidv4(),
       nome: 'Fluminense',
       cor: '#831d1c',
     },
     {
+      id: uuidv4(),
       nome: 'Botafogo',
       cor: '#000',
     }
@@ -25,6 +30,7 @@ function App() {
 
   const inicial = [
     {
+      id: uuidv4(),
       nome: 'Guilherme Dias',
       posicao: 'atacante', 
       time: times[0].nome
@@ -35,71 +41,85 @@ function App() {
       time: times[0].nome
     },
     {
+      id: uuidv4(),
       nome: 'Guilherme Dias',
       posicao: 'atacante', 
       time: times[0].nome
     },
     {
+      id: uuidv4(),
       nome: 'Guilherme Dias',
       posicao: 'atacante', 
       time: times[0].nome
     },
     {
+      id: uuidv4(),
       nome: 'Guilherme Dias',
       posicao: 'atacante', 
       time: times[1].nome
     },
     {
+      id: uuidv4(),
       nome: 'Guilherme Dias',
       posicao: 'atacante', 
       time: times[1].nome
     },
     {
+      id: uuidv4(),
       nome: 'Guilherme Dias',
       posicao: 'atacante', 
       time: times[1].nome
     },
     {
+      id: uuidv4(),
       nome: 'Guilherme Dias',
       posicao: 'atacante', 
       time: times[1].nome
     },
     {
+      id: uuidv4(),
       nome: 'Guilherme Dias',
       posicao: 'atacante', 
       time: times[2].nome
     },
     {
+      id: uuidv4(),
       nome: 'Guilherme Dias',
       posicao: 'atacante', 
       time: times[2].nome
     },
     {
+      id: uuidv4(),
       nome: 'Guilherme Dias',
       posicao: 'atacante', 
       time: times[2].nome
     },
     {
+      id: uuidv4(),
       nome: 'Guilherme Dias',
       posicao: 'atacante', 
       time: times[2].nome
     },
     {
+      id: uuidv4(),
       nome: 'Guilherme Dias',
       posicao: 'atacante', 
       time: times[3].nome
     },
     {
+      id: uuidv4(),
       nome: 'Guilherme Dias',
       posicao: 'atacante', 
       time: times[3].nome
     },
     {
+      id: uuidv4(),
       nome: 'Guilherme Dias',
       posicao: 'atacante', 
       time: times[3].nome
     },
     {
+      id: uuidv4(),
       nome: 'Guilherme Dias',
       posicao: 'atacante', 
       time: times[3].nome
@@ -112,13 +132,13 @@ function App() {
     setJogadores([...jogadores, jogador])
   }
 
-  function deletarJogador() {
-    console.log('deletando jogador')
-}
+  function deletarJogador(id) {
+    setJogadores(jogadores.filter(jogador => jogador.id !== id))
+  }
 
-  function mudarCorDoTime(cor, nome) {
+  function mudarCorDoTime(cor, id) {
     setTimes(times.map(time =>{
-      if(time.nome === nome) {
+      if(time.id === id) {
         time.cor = cor;
       }
       return time;
