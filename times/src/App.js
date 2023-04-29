@@ -30,95 +30,111 @@ function App() {
 
   const inicial = [
     {
+      favorito: false,
       id: uuidv4(),
       nome: 'Guilherme Dias',
       posicao: 'atacante', 
       time: times[0].nome
     },
     {
+      favorito: false,
       nome: 'Guilherme Dias',
       posicao: 'atacante', 
       time: times[0].nome
     },
     {
-      id: uuidv4(),
-      nome: 'Guilherme Dias',
-      posicao: 'atacante', 
-      time: times[0].nome
-    },
-    {
+      favorito: false,
       id: uuidv4(),
       nome: 'Guilherme Dias',
       posicao: 'atacante', 
       time: times[0].nome
     },
     {
+      favorito: false,
+      id: uuidv4(),
+      nome: 'Guilherme Dias',
+      posicao: 'atacante', 
+      time: times[0].nome
+    },
+    {
+      favorito: false,
       id: uuidv4(),
       nome: 'Guilherme Dias',
       posicao: 'atacante', 
       time: times[1].nome
     },
     {
+      favorito: false,
       id: uuidv4(),
       nome: 'Guilherme Dias',
       posicao: 'atacante', 
       time: times[1].nome
     },
     {
+      favorito: false,
       id: uuidv4(),
       nome: 'Guilherme Dias',
       posicao: 'atacante', 
       time: times[1].nome
     },
     {
+      favorito: false,
       id: uuidv4(),
       nome: 'Guilherme Dias',
       posicao: 'atacante', 
       time: times[1].nome
     },
     {
+      favorito: false,
       id: uuidv4(),
       nome: 'Guilherme Dias',
       posicao: 'atacante', 
       time: times[2].nome
     },
     {
+      favorito: false,
       id: uuidv4(),
       nome: 'Guilherme Dias',
       posicao: 'atacante', 
       time: times[2].nome
     },
     {
+      favorito: false,
       id: uuidv4(),
       nome: 'Guilherme Dias',
       posicao: 'atacante', 
       time: times[2].nome
     },
     {
+      favorito: false,
       id: uuidv4(),
       nome: 'Guilherme Dias',
       posicao: 'atacante', 
       time: times[2].nome
     },
     {
+      favorito: false,
       id: uuidv4(),
       nome: 'Guilherme Dias',
       posicao: 'atacante', 
       time: times[3].nome
     },
     {
+      favorito: false,
       id: uuidv4(),
       nome: 'Guilherme Dias',
       posicao: 'atacante', 
       time: times[3].nome
     },
     {
+      favorito: false,
       id: uuidv4(),
       nome: 'Guilherme Dias',
       posicao: 'atacante', 
       time: times[3].nome
     },
     {
+      favorito: false,
       id: uuidv4(),
       nome: 'Guilherme Dias',
       posicao: 'atacante', 
@@ -145,10 +161,25 @@ function App() {
     }))
   }
 
+  function cadastrarTime(novoTime) {
+    setTimes([...times, {...novoTime, id: uuidv4()}])
+  }
+
+  function resolverFavorito(id) {
+    setJogadores(jogadores.map(colaborador => {
+      if(colaborador.id === id) colaborador.favorito = !colaborador.favorito;
+      return colaborador;
+    }))
+  }
+
 
   return (
     <div className='app-times'>
-      <Formulario times={times.map(time => time.nome)} aoJogadorCadastrado={jogador => aoNovoJogadorAdicionado(jogador)}/>    
+      <Formulario 
+        cadastrarTime={cadastrarTime}
+        times={times.map(time => time.nome)} 
+        aoJogadorCadastrado={jogador => aoNovoJogadorAdicionado(jogador)}
+      />    
 
       {times.map((time, indice) => <Time 
         key={indice} 
@@ -157,6 +188,7 @@ function App() {
         jogadores={jogadores.filter(jogador => jogador.time === time.nome)}
         aoDeletar={deletarJogador}
         mudarCor={mudarCorDoTime}
+        aoFavoritar={resolverFavorito}
       />)}
     </div>
   );

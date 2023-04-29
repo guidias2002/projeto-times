@@ -4,15 +4,17 @@ import Input from '../Input'
 import Select from '../Select'
 import './Formulario.css'
 
-const Formulario = (props) => {
+const Formulario = ({aoJogadorCadastrado, times, cadastrarTime}) => {
 
     const [nome, setNome] = useState('')
     const [posicao, setPosicao] = useState('')
     const [time, setTime] = useState('')
+    const [nomeTime, setNomeTime] = useState('')
+    const [corTime, setCorTime] = useState('')
 
     const aoSalvar = (evento) => {
         evento.preventDefault()
-        props.aoJogadorCadastrado({
+        aoJogadorCadastrado({
             nome,
             posicao,
             time
@@ -44,12 +46,35 @@ const Formulario = (props) => {
                 <Select 
                     obrigatorio={true} 
                     label='Time' 
-                    itens={props.times} 
+                    itens={times} 
                     valor={time}
                     aoAlterado={valor => setTime(valor)}
                 />
 
                 <Botao texto='Criar Card' />
+            </form>
+
+            <form onSubmit={(evento => {
+                evento.preventDefault()
+                cadastrarTime({nome: nomeTime, cor: corTime})
+            })}>
+                <h2>Preencha os dados para criar um novo time</h2>
+                <Input
+                    obrigatorio
+                    label='Nome'
+                    placeholder='Digite o nome do time'
+                    valor={nomeTime}
+                    aoAlterado={valor => setNomeTime(valor)}
+                />
+                <Input
+                    obrigatorio
+                    type='color'
+                    label='Cor'
+                    placeholder='Digite a cor do time'
+                    valor={corTime}
+                    aoAlterado={valor => setCorTime(valor)}
+                />
+                <Botao texto='Criar um novo time'/>
             </form>
         </section>
     )

@@ -2,21 +2,26 @@ input:focus {
     outline: none;
 }
 
-.campoTexto {
+.campo {
     margin: 24px 0;
 }
 
-.campoTexto label {
+.campo label {
     display: block;
     margin-bottom: 8px;
     font-size: 24px;
     font-weight: bold;
 }
 
-.campoTexto input {
+.campo input {
     width: 100%;
     padding: 12px;
     border: none;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     box-sizing: border-box;
+}
+
+.campo-color input {
+    height: 40px;
+    padding: 5px 24px;
 }
